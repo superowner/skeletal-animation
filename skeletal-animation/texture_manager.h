@@ -12,8 +12,8 @@
 #include <string>
 
 class TextureManager {
-public:
-    static uint32_t LoadTexture(const std::string &path);
+ public:
+  static uint32_t LoadTexture(const std::string &path);
 };
 
 #endif

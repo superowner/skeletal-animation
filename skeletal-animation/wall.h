@@ -16,14 +16,14 @@
 #include "shader.h"
 
 class Wall {
-private:
-    uint32_t vao_, vbo_;
-    std::shared_ptr<Shader> shader_ptr_;
-    
-public:
-    Wall();
-    ~Wall();
-    void Draw(std::weak_ptr<Camera> camera_ptr) const;
+ private:
+  uint32_t vao_, vbo_;
+  std::shared_ptr<Shader> shader_ptr_;
+
+ public:
+  Wall();
+  ~Wall();
+  void Draw(std::weak_ptr<Camera> camera_ptr) const;
 };
 
 #endif
