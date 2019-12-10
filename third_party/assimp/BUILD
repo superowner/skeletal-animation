@@ -14,9 +14,14 @@ cmake_external(
         "nmake",
         "nmake install",
     ],
+    interface_libraries = [
+        "assimp-vc142-mt.lib"
+    ],
     static_libraries = [
         "IrrXML.lib",
-        "assimp-vc142-mt.lib"
+    ],
+    shared_libraries = [
+        "../bin/assimp-vc142-mt.dll"
     ],
     visibility = [
         "//visibility:public"
