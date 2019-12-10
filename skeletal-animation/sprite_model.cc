@@ -24,9 +24,18 @@ using std::pair;
 using namespace Assimp;
 using namespace glm;
 
-SpriteModel::SpriteModel(std::filesystem::path path): directory_path_(path.parent_path()) {
+SpriteModel::SpriteModel(const std::string &path) {
+    {
+        int i;
+        for (i = path.size() - 1; i >= 0; i--) {
+            if (path[i] == '/' || path[i] == '\\') 
+            break;
+        }
+        directory_path_ = path.substr(0, i);
+    }
+
     scene_ = aiImportFile(path.c_str(), aiProcess_CalcTangentSpace | aiProcess_FlipUVs | aiProcess_Triangulate);
-    shader_ptr_ = shared_ptr<Shader>(new Shader(directory_path_ / "model.vert", directory_path_ / "model.frag"));
+    shader_ptr_ = shared_ptr<Shader>(new Shader(directory_path_ + "/model.vert", directory_path_ + "/model.frag"));
 
     animation_channel_map_.clear();
     for (int i = 0; i < scene_->mNumAnimations; i++) {

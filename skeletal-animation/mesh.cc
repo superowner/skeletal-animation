@@ -6,18 +6,18 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
+#include "mesh.h"
+
 #include <algorithm>
 
-#include "glad/glad.h"
-#include "glm/gtc/matrix_transform.hpp"
+#include <glad/glad.h>
+#include <glm/gtc/matrix_transform.hpp>
 
-#include "mesh.h"
 #include "texture_manager.h"
 
 using namespace glm;
-using namespace boost;
 
-Mesh::Mesh(filesystem::path directory_path, aiMesh *mesh, const aiScene *scene, Namer &bone_namer, std::vector<glm::mat4> &bone_offsets) {
+Mesh::Mesh(const std::string &directory_path, aiMesh *mesh, const aiScene *scene, Namer &bone_namer, std::vector<glm::mat4> &bone_offsets) {
     auto mat4_from_aimatrix4x4 = [] (aiMatrix4x4 matrix) -> mat4 {
         mat4 res;
         for (int i = 0; i < 4; i++) for (int j = 0; j < 4; j++) res[j][i] = matrix[i][j];
@@ -38,7 +38,7 @@ Mesh::Mesh(filesystem::path directory_path, aiMesh *mesh, const aiScene *scene, 
         int i;
         for (i = (int) item.length() - 1; i >= 0; i--) if (item[i] == '\\') break;
         item = item.substr(i + 1);
-        path /= item;
+        path = path + "/" + item;
     }
     texture_id_ = TextureManager::LoadTexture(path);
     

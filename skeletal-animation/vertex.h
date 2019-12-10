@@ -10,7 +10,7 @@
 
 #include <stdint.h>
 
-#include "glm/glm.hpp"
+#include <glm/glm.hpp>
 
 constexpr int kMaxBonesPerVertex = 8;
 

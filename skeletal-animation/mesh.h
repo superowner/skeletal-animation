@@ -6,12 +6,11 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#pragma once
+#ifndef SKELETAL_ANIMATION_MESH_H_
+#define SKELETAL_ANIMATION_MESH_H_
 
 #include <vector>
 #include <memory>
-
-#include <filesystem>
 
 #include <assimp/scene.h>
 
@@ -21,7 +20,7 @@
 
 class Mesh {
 public:
-    Mesh(boost::filesystem::path directory_path, aiMesh *mesh, const aiScene *scene, Namer &bone_namer, std::vector<glm::mat4> &bone_offsets);
+    Mesh(const std::string &directory_path, aiMesh *mesh, const aiScene *scene, Namer &bone_namer, std::vector<glm::mat4> &bone_offsets);
     ~Mesh();
     void Draw(std::weak_ptr<Shader> shader_ptr) const;
     
@@ -29,3 +28,5 @@ private:
     uint32_t vao_, vbo_, ebo_, texture_id_, indices_size_;
     
 };
+
+#endif

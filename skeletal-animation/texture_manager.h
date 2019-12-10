@@ -6,11 +6,14 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#pragma once
+#ifndef SKELETAL_ANIMATION_TEXTURE_MANAGER_H_
+#define SKELETAL_ANIMATION_TEXTURE_MANAGER_H_
 
-#include <filesystem>
+#include <string>
 
 class TextureManager {
 public:
-    static uint32_t LoadTexture(std::filesystem::path);
+    static uint32_t LoadTexture(const std::string &path);
 };
+
+#endif

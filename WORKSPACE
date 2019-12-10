@@ -37,7 +37,7 @@ http_archive(
     name = "glad",
     build_file = "//third_party/glad:BUILD",
     # sha256 = ""
-    url = "https://glad.dav1d.de/generated/tmp6oeZQyglad/glad.zip",
+    url = "https://glad.dav1d.de/generated/tmpZstzvtglad/glad.zip",
     strip_prefix = ""
 )
 

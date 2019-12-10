@@ -81,15 +81,39 @@ cc_library(
 )
 
 cc_library(
-    name = "sprite_model",
-    srcs = ["sprite_model.cc"],
-    hdrs = ["sprite_model.h"],
+    name = "mesh",
+    srcs = ["mesh.cc"],
+    hdrs = ["mesh.h"],
+    copts = THIRD_PARTY_COPTS,
     deps = [
         "@glm//:glm",
         "@assimp//:assimp",
-        ":camera",
-        ":shader",
-        ":mesh",
+        "@glad//:glad",
         ":namer",
+        ":vertex",
+        ":shader",
+        ":texture_manager",
+    ],
+)
+
+cc_library(
+    name = "sprite_model",
+    srcs = ["sprite_model.cc"],
+    hdrs = ["sprite_model.h"],
+    copts = THIRD_PARTY_COPTS,
+    deps = [
+        ":mesh",
+        ":camera"
+    ],
+)
+
+cc_binary(
+    name = "main",
+    srcs = ["main.cc"],
+    copts = THIRD_PARTY_COPTS,
+    deps = [
+        ":sprite_model",
+        ":wall",
+        ":keyboard"
     ],
 )

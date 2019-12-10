@@ -6,10 +6,10 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#pragma once
+#ifndef SKELETAL_ANIMATION_CG_EXCEPTION_H_
+#define SKELETAL_ANIMATION_CG_EXCEPTION_H_
 
 #include <string>
-#include <filesystem>
 
 class ShaderCompileError: public std::exception {
 public:
@@ -34,7 +34,7 @@ private:
 class LoadPictureError: public std::exception {
 public:
     LoadPictureError() = delete;
-    LoadPictureError(std::filesystem::path path);
+    LoadPictureError(const std::string &path);
     const char *what() const noexcept;
     
 private:
@@ -66,3 +66,5 @@ public:
 private:
     std::string error_message;
 };
+
+#endif

@@ -6,13 +6,12 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#pragma once
+#ifndef SKELETAL_ANIMATION_SPRITE_MODEL_H_
+#define SKELETAL_ANIMATION_SPRITE_MODEL_H_
 
 #include <vector>
 #include <string>
 #include <memory>
-
-#include <filesystem>
 
 #include <assimp/scene.h>
 #include <glm/glm.hpp>
@@ -25,13 +24,13 @@
 class SpriteModel {
 public:
     SpriteModel() = delete;
-    SpriteModel(std::filesystem::path path);
+    SpriteModel(const std::string &path);
     ~SpriteModel();
     void Draw(std::weak_ptr<Camera> camera_ptr);
     void Draw(uint32_t animation_id, std::weak_ptr<Camera> camera_ptr, double time);
     
 private:
-    std::filesystem::path directory_path_;
+    std::string directory_path_;
     std::vector<std::shared_ptr<Mesh>> mesh_ptrs_;
     const aiScene *scene_;
     std::shared_ptr<Shader> shader_ptr_;
@@ -47,3 +46,4 @@ private:
     static glm::mat4 InterpolateScalingMatrix(aiVectorKey *keys, uint32_t n, double ticks);
 };
 
+#endif

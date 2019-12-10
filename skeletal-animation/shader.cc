@@ -6,19 +6,21 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
+#include "shader.h"
+
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <string>
 
 #include "glad/glad.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/type_ptr.hpp"
 
-#include "shader.h"
 #include "cg_exception.h"
 
-Shader::Shader(std::filesystem::path vs_path, std::filesystem::path fs_path) {
-    auto ReadFileAt = [] (std::filesystem::path path) -> std::string {
+Shader::Shader(const std::string &vs_path, const std::string &fs_path) {
+    auto ReadFileAt = [] (const std::string &path) -> std::string {
         std::ifstream ifs(path.c_str());
         std::string res((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
         return res;
@@ -30,13 +32,7 @@ Shader::Shader(std::filesystem::path vs_path, std::filesystem::path fs_path) {
     id = Link(vs_id, fs_id);
 }
 
-Shader::Shader(std::string vs_source, std::string fs_source) {
-    auto vs_id = Compile(GL_VERTEX_SHADER, vs_source, "");
-    auto fs_id = Compile(GL_FRAGMENT_SHADER, fs_source, "");
-    id = Link(vs_id, fs_id);
-}
-
-uint32_t Shader::Compile(uint32_t type, const std::string &source, std::filesystem::path path) {
+uint32_t Shader::Compile(uint32_t type, const std::string &source, const std::string &path) {
     uint32_t shader_id = glCreateShader(type);
     const char *temp = source.c_str();
     glShaderSource(shader_id, 1, &temp, nullptr);
@@ -50,7 +46,7 @@ uint32_t Shader::Compile(uint32_t type, const std::string &source, std::filesyst
     glGetShaderInfoLog(shader_id, length, nullptr, log);
     std::string log_str = log;
     delete [] log;
-    throw ShaderCompileError(path.string(), log_str);
+    throw ShaderCompileError(path, log_str);
 }
 
 uint32_t Shader::Link(uint32_t vs_id, uint32_t fs_id) {

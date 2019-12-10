@@ -6,12 +6,13 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#pragma once
+#ifndef SKELETAL_ANIMATION_CAMERA_H_
+#define SKELETAL_ANIMATION_CAMERA_H_
 
 #include <algorithm>
 
-#include "glm/glm.hpp"
-#include "glm/gtc/constants.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/constants.hpp>
 
 class Camera {
 public:
@@ -48,3 +49,5 @@ private:
     double alpha_, beta_, width_height_ratio_;
     
 };
+
+#endif

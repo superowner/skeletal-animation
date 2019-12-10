@@ -6,9 +6,11 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#pragma once
+#ifndef SKELETAL_ANIMATION_WALL_H_
+#define SKELETAL_ANIMATION_WALL_H_
 
 #include <stdint.h>
+#include <memory>
 
 #include "camera.h"
 #include "shader.h"
@@ -23,3 +25,5 @@ public:
     ~Wall();
     void Draw(std::weak_ptr<Camera> camera_ptr) const;
 };
+
+#endif
