@@ -1,5 +1,6 @@
 .DS_Store
-bin/*
-lib/*
-build/*
-!build/premake4.lua
+bazel-bin
+bazel-out
+bazel-skeletal-animation
+bazel-testlogs
+.vscode

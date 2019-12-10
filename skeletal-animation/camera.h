@@ -10,8 +10,8 @@
 
 #include <algorithm>
 
-#include <glm/glm.hpp>
-#include <glm/gtc/constants.hpp>
+#include "glm/glm.hpp"
+#include "glm/gtc/constants.hpp"
 
 class Camera {
 public:

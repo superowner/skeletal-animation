@@ -9,7 +9,7 @@
 #pragma once
 
 #include <string>
-#include <boost/filesystem.hpp>
+#include <filesystem>
 
 class ShaderCompileError: public std::exception {
 public:
@@ -34,7 +34,7 @@ private:
 class LoadPictureError: public std::exception {
 public:
     LoadPictureError() = delete;
-    LoadPictureError(boost::filesystem::path path);
+    LoadPictureError(std::filesystem::path path);
     const char *what() const noexcept;
     
 private:

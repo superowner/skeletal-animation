@@ -12,9 +12,9 @@
 
 #include <map>
 #include <string>
-#include <glad/glad.h>
 
-#include "stb/stb_image.h"
+#include "glad/glad.h"
+#include "stb_image.h"
 
 #include "texture_manager.h"
 #include "cg_exception.h"
@@ -23,13 +23,13 @@ using std::map;
 using std::string;
 using std::vector;
 
-uint32_t TextureManager::LoadTexture(boost::filesystem::path path) {
+uint32_t TextureManager::LoadTexture(std::filesystem::path path) {
     uint32_t texture;
     static map<string, uint32_t> memory;
-    if (memory.count(path.c_str())) return memory[path.c_str()];
+    if (memory.count(path.string())) return memory[path.string()];
     int w, h, comp;
-    unsigned char* image = stbi_load(path.c_str(), &w, &h, &comp, 0);
-    if (image == nullptr) throw LoadPictureError(path.c_str());
+    unsigned char* image = stbi_load(path.string().c_str(), &w, &h, &comp, 0);
+    if (image == nullptr) throw LoadPictureError(path.string());
     
     glGenTextures(1, &texture);
     
@@ -52,5 +52,5 @@ uint32_t TextureManager::LoadTexture(boost::filesystem::path path) {
     glBindTexture(GL_TEXTURE_2D, 0);
     
     stbi_image_free(image);
-    return memory[path.c_str()] = texture;
+    return memory[path.string()] = texture;
 }

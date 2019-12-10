@@ -6,9 +6,9 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#include <glm/gtc/matrix_transform.hpp>
-
 #include "camera.h"
+
+#include "glm/gtc/matrix_transform.hpp"
 
 using namespace glm;
 

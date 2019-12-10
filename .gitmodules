@@ -1,3 +1,0 @@
-[submodule "prerequisite/stb"]
-	path = prerequisite/stb
-	url = https://github.com/nothings/stb

@@ -14,7 +14,7 @@
 
 Vertex::Vertex() {
     std::fill(bone_ids, bone_ids + kMaxBonesPerVertex, 0);
-    std::fill(bone_weights, bone_weights + kMaxBonesPerVertex, 0);
+    std::fill(bone_weights, bone_weights + kMaxBonesPerVertex, 0.f);
 }
 
 void Vertex::AddBone(int id, float weight) {

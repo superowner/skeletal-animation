@@ -6,9 +6,9 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#include <GLFW/glfw3.h>
-
 #include "keyboard.h"
+
+#include "GLFW/glfw3.h"
 
 Keyboard Keyboard::shared = Keyboard();
 

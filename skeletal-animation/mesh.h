@@ -11,7 +11,7 @@
 #include <vector>
 #include <memory>
 
-#include <boost/filesystem.hpp>
+#include <filesystem>
 
 #include <assimp/scene.h>
 

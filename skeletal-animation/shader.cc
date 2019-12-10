@@ -8,16 +8,17 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 
-#include <glad/glad.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/type_ptr.hpp>
+#include "glad/glad.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
 
 #include "shader.h"
 #include "cg_exception.h"
 
-Shader::Shader(boost::filesystem::path vs_path, boost::filesystem::path fs_path) {
-    auto ReadFileAt = [] (boost::filesystem::path path) -> std::string {
+Shader::Shader(std::filesystem::path vs_path, std::filesystem::path fs_path) {
+    auto ReadFileAt = [] (std::filesystem::path path) -> std::string {
         std::ifstream ifs(path.c_str());
         std::string res((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
         return res;
@@ -35,7 +36,7 @@ Shader::Shader(std::string vs_source, std::string fs_source) {
     id = Link(vs_id, fs_id);
 }
 
-uint32_t Shader::Compile(uint32_t type, const std::string &source, boost::filesystem::path path) {
+uint32_t Shader::Compile(uint32_t type, const std::string &source, std::filesystem::path path) {
     uint32_t shader_id = glCreateShader(type);
     const char *temp = source.c_str();
     glShaderSource(shader_id, 1, &temp, nullptr);
@@ -49,7 +50,7 @@ uint32_t Shader::Compile(uint32_t type, const std::string &source, boost::filesy
     glGetShaderInfoLog(shader_id, length, nullptr, log);
     std::string log_str = log;
     delete [] log;
-    throw ShaderCompileError(path.c_str(), log_str);
+    throw ShaderCompileError(path.string(), log_str);
 }
 
 uint32_t Shader::Link(uint32_t vs_id, uint32_t fs_id) {

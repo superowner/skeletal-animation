@@ -8,9 +8,9 @@
 
 #pragma once
 
-#include <boost/filesystem.hpp>
+#include <filesystem>
 
 class TextureManager {
 public:
-    static uint32_t LoadTexture(boost::filesystem::path);
+    static uint32_t LoadTexture(std::filesystem::path);
 };

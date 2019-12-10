@@ -6,7 +6,6 @@
 //  Copyright © 2018 tigertang. All rights reserved.
 //
 
-#include <boost/format.hpp>
 #include <iostream>
 
 #include <glad/glad.h>
@@ -25,7 +24,7 @@ using std::pair;
 using namespace Assimp;
 using namespace glm;
 
-SpriteModel::SpriteModel(boost::filesystem::path path): directory_path_(path.parent_path()) {
+SpriteModel::SpriteModel(std::filesystem::path path): directory_path_(path.parent_path()) {
     scene_ = aiImportFile(path.c_str(), aiProcess_CalcTangentSpace | aiProcess_FlipUVs | aiProcess_Triangulate);
     shader_ptr_ = shared_ptr<Shader>(new Shader(directory_path_ / "model.vert", directory_path_ / "model.frag"));
 
