@@ -4,3 +4,5 @@ bazel-out
 bazel-skeletal-animation
 bazel-testlogs
 .vscode
+
+third_party/env.bzl
