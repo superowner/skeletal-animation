@@ -1,3 +1,23 @@
+You can build it with(win10 x64):
+//boost_1_68_0
+//glad - 0.1.34
+//glfw - 3.3.2.bin.WIN64
+//glm - 0.9.9.8
+//assimp - 3.1.1 - win - binaries
+//glew - 2.1.0 - win32
+//SDL2_image - 2.0.5
+//SDL2 - 2.0.12
+
+//lib
+//opengl32.lib
+//SDL2.lib
+//SDL2main.lib
+//SDL2_image.lib
+//glew32.lib
+//glfw3.lib
+//assimp.lib
+
+
 # Skeletal Animation
 
 This repository is a demo of skeletal animation. I use [assimp](http://assimp.org/) to load `fbx` format model including its binding animation. [glm](https://glm.g-truc.net/) is applied to deal with mathematics related works, mainly about matrix transformations. Rendering is implemented with `OpenGL 4.1`.
